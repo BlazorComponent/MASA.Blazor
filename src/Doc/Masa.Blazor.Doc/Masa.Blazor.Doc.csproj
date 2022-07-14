@@ -6,19 +6,19 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="FluentValidation" Version="11.0.3"/>
-        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.0"/>
-        <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0"/>
-        <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0"/>
+        <PackageReference Include="FluentValidation" Version="11.0.3" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+        <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
     </ItemGroup>
 
     <ItemGroup>
-        <SupportedPlatform Include="browser"/>
+        <SupportedPlatform Include="browser" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\Masa.Blazor\Masa.Blazor.csproj"/>
-        <ProjectReference Include="..\Masa.Blazor.Doc.Models\Masa.Blazor.Doc.Models.csproj"/>
+        <ProjectReference Include="..\..\Masa.Blazor\Masa.Blazor.csproj" />
+        <ProjectReference Include="..\Masa.Blazor.Doc.Models\Masa.Blazor.Doc.Models.csproj" />
     </ItemGroup>
 
     <ItemGroup>
@@ -37,6 +37,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="wwwroot\backgrounds\"/>
+        <Folder Include="wwwroot\backgrounds\" />
     </ItemGroup>
 </Project>

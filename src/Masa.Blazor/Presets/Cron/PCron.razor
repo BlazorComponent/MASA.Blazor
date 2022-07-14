@@ -1,0 +1,26 @@
+﻿@namespace Masa.Blazor.Presets
+
+<MTabs @bind-Value="_selectedPeriod">
+    @foreach (var item in CronItems)
+    {
+        <MTab Value="item.Period.ToString()">
+            @I18n.T($"$masaBlazor.{nameof(item.Period)}.{item.Period.ToString()}")
+        </MTab>
+    }
+</MTabs>
+<MTabsItems @bind-Value="_selectedPeriod">
+    @foreach (var item in CronItems)
+    {
+        <MTabItem Value="item.Period.ToString()">
+            <CronItem Period="item.Period" @bind-Value="item.CronValue" CronValueHasChanged="CronValueHasChanged">
+            </CronItem>
+        </MTabItem>
+    }
+</MTabsItems>
+<MAlert @bind-Value="_hasError"
+        Dense
+        Outlined
+        Style="margin-left:12px; margin-right:28px"
+        Type="AlertTypes.Error">
+    @_errorMessage
+</MAlert>

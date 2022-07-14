@@ -1,0 +1,98 @@
+﻿@namespace Masa.Blazor.Presets
+
+<div class="m-cron">
+    <MRadioGroup Value="_selectedCronType" TValue="CronTypes" ValueChanged="OnSelectedCronTypeChanged">
+        <MRadio @key="CronTypes.Period" Value="CronTypes.Period">
+            <LabelContent>
+                <div @onclick:preventDefault @onclick:stopPropagation class="m-cron-item">
+                    @I18n.T($"$masaBlazor.cron.{nameof(CronTypes.Period).ToLower()}.{Period.ToString().ToLower()}")
+                </div>
+            </LabelContent>
+        </MRadio>
+        @if (_showNotSpecify)
+        {
+            <MRadio @key="CronTypes.NotSpecify" Value="CronTypes.NotSpecify" Label="@I18n.T($"$masaBlazor.cron.notSpecify")">
+                <LabelContent>
+                    <div @onclick:preventDefault @onclick:stopPropagation class="m-cron-item">
+                        @I18n.T($"$masaBlazor.cron.notSpecify")
+                    </div>
+                </LabelContent>
+            </MRadio>
+        }
+        <MRadio @key="CronTypes.Range" Value="CronTypes.Range">
+            <LabelContent>
+                <div @onclick:preventDefault @onclick:stopPropagation class="m-cron-item">
+                    @I18n.T($"$masaBlazor.cron.range.from") <MTextField Value="_periodStart" HideDetails="true" Outlined Dense ValueChanged="OnPeriodStartChanged" Type="number" NumberProps="prop=> { prop.HideControl = true; prop.Min = _minUnit; prop.Max = _periodEnd; }" TValue="int?"></MTextField> @I18n.T("$masaBlazor.cron.range.to") <MTextField Value="_periodEnd" TValue="int?" Type="number" NumberProps="prop=> { prop.HideControl = true; prop.Min= _periodStart; prop.Max = _maxUnit; }" Dense Outlined HideDetails="true" ValueChanged="OnPeriodEndChanged"></MTextField> @_i18nUnitText
+                </div>
+            </LabelContent>
+        </MRadio>
+        @if (Period != PeriodTypes.Week)
+        {
+            <MRadio @key="CronTypes.StartFrom" Value="CronTypes.StartFrom">
+                <LabelContent>
+                    <div @onclick:preventDefault @onclick:stopPropagation class="m-cron-item">
+                        @I18n.T($"$masaBlazor.cron.startFrom.from") <MTextField Value="_startFromPeriod" HideDetails="true" Outlined Dense TValue="int?" Type="number" NumberProps="prop=> { prop.HideControl = true; prop.Min = _minUnit; prop.Max = _maxUnit; }" ValueChanged="OnStartFromPeriodChange"></MTextField> @string.Format(I18n.T("$masaBlazor.cron.startFrom.middle"), _i18nUnitText) <MTextField Value="_startEveryPeriod" Dense Outlined HideDetails="true" Type="number" NumberProps="prop=> { prop.HideControl = true; prop.Min = _minUnit; prop.Max = _maxUnit; }" TValue="int" ValueChanged="OnStartEveryPeriod"></MTextField> @string.Format(I18n.T("$masaBlazor.cron.startFrom.end"), _i18nUnitText)
+                    </div>
+                </LabelContent>
+            </MRadio>
+
+            if (Period == PeriodTypes.Day)
+            {
+                <MRadio @key="CronTypes.NearestDay" Value="CronTypes.NearestDay">
+                    <LabelContent>
+                        <div @onclick:preventDefault @onclick:stopPropagation class="m-cron-item">
+                            @I18n.T($"$masaBlazor.cron.nearestDayStart") <MTextField Value="_nearestOfDay" HideDetails="true" Outlined Dense TValue="int?" Type="number" NumberProps="prop=> { prop.HideControl = true; prop.Min = _minUnit; prop.Max = _maxUnit; }" ValueChanged="OnNearestOfDayChanged"></MTextField> @I18n.T($"$masaBlazor.cron.nearestDayEnd")
+                        </div>
+                    </LabelContent>
+                </MRadio>
+
+                <MRadio @key="CronTypes.LastOfPeriod" Value="CronTypes.LastOfPeriod">
+                    <LabelContent>
+                        <div @onclick:preventDefault @onclick:stopPropagation class="m-cron-item">
+                            @I18n.T($"$masaBlazor.cron.lastOfPeriod.day")
+                        </div>
+                    </LabelContent>
+                </MRadio>
+            }
+        }
+        else
+        {
+            <MRadio @key="CronTypes.WeekStartFrom" Value="CronTypes.WeekStartFrom">
+                <LabelContent>
+                    <div @onclick:preventDefault @onclick:stopPropagation class="m-cron-item">
+                        @I18n.T($"$masaBlazor.cron.weekStartFrom.from") <MSelect Value="_selectWeekNumber" Items="_weekNumbers" TItem="WeekNumbers" TItemValue="WeekNumbers" TValue="WeekNumbers" ItemText="i=> GetWeekNumberI18nString(i)" ItemValue="i=> i" ValueChanged="OnWeekNumberChanged" Outlined Dense HideDetails="true"></MSelect>  @string.Format(I18n.T("$masaBlazor.cron.weekStartFrom.middle"), _i18nUnitText) <MSelect Value="_selectDayOfWeek" Items="_dayOfWeeks" TItem="DayOfWeek" TItemValue="DayOfWeek" TValue="DayOfWeek" ItemText="i=> GetDayOfWeekI18nString(i)" ItemValue="i=> i" ValueChanged="OnDayOfWeekChanged" Outlined Dense HideDetails="true"></MSelect>  @I18n.T($"$masaBlazor.cron.weekStartFrom.end")
+                    </div>
+                </LabelContent>
+            </MRadio>
+
+            <MRadio @key="CronTypes.LastOfPeriod" Value="CronTypes.LastOfPeriod">
+                <LabelContent>
+                    <div @onclick:preventDefault @onclick:stopPropagation class="m-cron-item">
+                        @I18n.T($"$masaBlazor.cron.lastOfPeriod.week") <MTextField Value="_startFromPeriod" HideDetails="true" Outlined Dense TValue="int?" Type="number" NumberProps="prop=> { prop.HideControl = true; prop.Min = _minUnit; prop.Max = _maxUnit; }" ValueChanged="OnLastPeriodOfWeekChanged"></MTextField>
+                    </div>
+                </LabelContent>
+            </MRadio>
+        }
+
+        @if (Period != PeriodTypes.Year)
+        {
+            <MRadio @key="CronTypes.Specify" Value="CronTypes.Specify">
+                <LabelContent>
+                    <div @onclick:preventDefault @onclick:stopPropagation class="m-cron-item">
+                        @I18n.T("$masaBlazor.cron.specify")
+                        <MSelect Value="@_specifyPeriods" TValue="List<int>" TItem="int" TItemValue="int" ValueChanged="OnSpecifyPeriodChanged"
+                             Items="@_allPeriodList"
+                             Outlined
+                             HideDetails="true"
+                             Dense
+                             ItemText="u => u.ToString().PadLeft(2, '0')"
+                             ItemValue="u => u"
+                             Multiple
+                             Chips>
+                        </MSelect>
+                    </div>
+                </LabelContent>
+            </MRadio>
+        }
+    </MRadioGroup>
+</div>

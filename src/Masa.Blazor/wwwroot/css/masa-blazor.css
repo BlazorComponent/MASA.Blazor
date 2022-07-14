@@ -29585,3 +29585,17 @@ html.overflow-y-hidden {
 }
 
 @import url(masa-blazor.extend.css);
+.m-cron .m-text-field {
+    margin: 0px 16px 0px 16px !important;
+}
+.m-cron {
+    padding: 0px 12px 0px 12px;
+}
+.m-cron .m-cron-item {
+    align-items: center;
+    display: flex;
+    width: 100%;
+}
+.m-cron .m-radio {
+    padding-top: 8px;
+} 

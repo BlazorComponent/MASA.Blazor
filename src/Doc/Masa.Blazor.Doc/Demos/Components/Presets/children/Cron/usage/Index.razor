@@ -1,0 +1,61 @@
+﻿@using System.Text
+@using BlazorComponent.I18n
+
+<PCron Value="@_cronValue" ValueChanged="OnCronValueChanged">
+</PCron>
+
+<div>
+    <MTextField @bind-Value="_cronValue" Label="@i18n.T("$masaBlazor.cron.demo.cronExpressionLabel")" Outlined Dense></MTextField>
+    <MTextarea @bind-Value="_nextTenRunTime" Readonly Outlined Rows="11" Label="@i18n.T("$masaBlazor.cron.demo.nextTenRunTime")">
+    </MTextarea>
+</div>
+
+@code {
+    [Inject]
+    I18n i18n { get; set; }
+
+    string _cronValue = string.Empty;
+    string _nextTenRunTime = string.Empty;
+    StringBuilder sb = new ();
+
+    private Task OnCronValueChanged(string cronValue)
+    {
+        if(_cronValue != cronValue)
+        {
+            _cronValue = cronValue;
+
+            GetNextTenRunTime();
+        }
+        return Task.CompletedTask;
+    }
+
+    private void GetNextTenRunTime()
+    {
+        sb.Clear();
+        _nextTenRunTime = string.Empty;
+
+        var startTime = DateTimeOffset.Now;
+
+        var cronExpression = new CronExpression(_cronValue);
+
+        for (int i = 0; i < 10; i++)
+        {
+            var nextExcuteTime = cronExpression.GetNextValidTimeAfter(startTime);
+
+            if (nextExcuteTime.HasValue)
+            {
+                startTime = nextExcuteTime.Value;
+                sb.AppendLine(startTime.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss"));
+            }
+        }
+
+        if(sb.Length == 0)
+        {
+            _nextTenRunTime = "No more next run time";
+        }
+        else
+        {
+            _nextTenRunTime = sb.ToString();
+        }
+    }
+}

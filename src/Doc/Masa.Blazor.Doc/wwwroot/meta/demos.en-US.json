@@ -27,6 +27,14 @@
           },
           {
             "Order": 0,
+            "Title": "Cron Expression Generator",
+            "SubTitle": "Cron Expression Generator",
+            "FullTitle": "Cron Expression Generator (Cron Expression Generator)",
+            "Type": "menuItem",
+            "Url": "components/cron-expression-generator"
+          },
+          {
+            "Order": 0,
             "Title": "Drawers",
             "FullTitle": "Drawers",
             "Type": "menuItem",

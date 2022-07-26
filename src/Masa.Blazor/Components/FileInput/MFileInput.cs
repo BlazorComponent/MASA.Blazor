@@ -244,17 +244,20 @@ namespace Masa.Blazor
                     files.Add(file);
                 }
 
-                await SetInternalValueAsync((TValue)files);
+                // await SetInternalValueAsync((TValue)files);
+                InternalValue = (TValue)files;
             }
             else
             {
                 if (args.FileCount > 0)
                 {
-                    await SetInternalValueAsync((TValue)args.File);
+                    // await SetInternalValueAsync((TValue)args.File);
+                    InternalValue = (TValue)args.File;
                 }
                 else
                 {
-                    await SetInternalValueAsync(default);
+                    // await SetInternalValueAsync(default);
+                    InternalValue = default;
                 }
             }
         }
@@ -276,11 +279,13 @@ namespace Masa.Blazor
             if (Multiple)
             {
                 IList<IBrowserFile> values = new List<IBrowserFile>();
-                await SetInternalValueAsync((TValue)values);
+                // await SetInternalValueAsync((TValue)values);
+                InternalValue = (TValue)values;
             }
             else
             {
-                await SetInternalValueAsync(default);
+                // await SetInternalValueAsync(default);
+                InternalValue = default;
             }
 
             if (OnClearClick.HasDelegate)

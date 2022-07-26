@@ -100,7 +100,8 @@
                 }
             }
 
-            await SetInternalValueAsync(radio.Value);
+            // await SetInternalValueAsync(radio.Value);
+            InternalValue = radio.Value;
         }
     }
 }

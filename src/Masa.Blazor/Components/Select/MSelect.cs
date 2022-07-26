@@ -538,7 +538,8 @@ namespace Masa.Blazor
             {
                 if (value is TValue val)
                 {
-                    await SetInternalValueAsync(val);
+                    // await SetInternalValueAsync(val);
+                    InternalValue = val;
                 }
 
                 IsMenuActive = false;
@@ -557,7 +558,8 @@ namespace Masa.Blazor
 
                 if (internalValues is TValue val)
                 {
-                    await SetInternalValueAsync(val);
+                    // await SetInternalValueAsync(val);
+                    InternalValue = val;
                 }
             }
 
@@ -852,11 +854,13 @@ namespace Masa.Blazor
             if (Multiple)
             {
                 IList<TItemValue> values = new List<TItemValue>();
-                await SetInternalValueAsync((TValue)values);
+                // await SetInternalValueAsync((TValue)values);
+                InternalValue = (TValue)values;
             }
             else
             {
-                await SetInternalValueAsync(default);
+                // await SetInternalValueAsync(default);
+                InternalValue = default;
             }
 
             if (OnClearClick.HasDelegate)
@@ -927,7 +931,8 @@ namespace Masa.Blazor
             }
             else
             {
-                await SetInternalValueAsync(default(TValue));
+                // await SetInternalValueAsync(default(TValue));
+                InternalValue = default;
             }
 
             // if all items have been delete,

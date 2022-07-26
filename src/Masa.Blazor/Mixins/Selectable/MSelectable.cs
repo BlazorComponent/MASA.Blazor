@@ -50,7 +50,8 @@ public partial class MSelectable : MInput<bool>, ISelectable
 
         await ValidateAsync(true, input);
 
-        await SetInternalValueAsync(input);
+        // await SetInternalValueAsync(input);
+        InternalValue = input;
     }
 
     public async Task HandleOnBlur(FocusEventArgs args)

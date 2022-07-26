@@ -230,11 +230,13 @@ namespace Masa.Blazor
                 if (Multiple)
                 {
                     IList<TItemValue> values = new List<TItemValue>();
-                    await SetInternalValueAsync((TValue)values);
+                    // await SetInternalValueAsync((TValue)values);
+                    InternalValue = (TValue)values;
                 }
                 else
                 {
-                    await SetInternalValueAsync(default);
+                    // await SetInternalValueAsync(default);
+                    InternalValue = default;
                 }
             }
             else

@@ -250,7 +250,8 @@ namespace Masa.Blazor
         protected virtual async Task SetInternalValueAsync(double internalValue)
         {
             var val = RoundValue(Math.Min(Math.Max(internalValue, Min), Max));
-            await SetInternalValueAsync(val is TValue v ? v : default);
+            // await SetInternalValueAsync(val is TValue v ? v : default);
+            InternalValue = val is TValue v ? v : default;
         }
 
         protected override void OnWatcherInitialized()

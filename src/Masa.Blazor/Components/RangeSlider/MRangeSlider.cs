@@ -123,7 +123,8 @@ namespace Masa.Blazor
             }
 
             var internalValue = val is IList<TValue> internalVal ? internalVal : default;
-            await SetInternalValueAsync(internalValue);
+            // await SetInternalValueAsync(internalValue);
+            InternalValue = internalValue;
         }
 
         public override async Task HandleOnKeyDownAsync(KeyboardEventArgs args)

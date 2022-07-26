@@ -664,7 +664,11 @@ namespace Masa.Blazor
             if (success)
             {
                 _badInput = null;
-                InputValue = val;
+                // InputValue = val;
+                // await SetInternalValueAsync(val);
+                InternalValue = val;
+
+                Console.WriteLine($"HandleOnInputAsync InputValue: {val}");
 
                 if (OnInput.HasDelegate)
                 {
@@ -695,7 +699,10 @@ namespace Masa.Blazor
         {
             if (!_compositionInputting)
             {
-                await SetInternalValueAsync(InputValue);
+                Console.WriteLine($"TextFieldDebounceTimerRun SetInternalValueAsync InputValue:{InputValue}");
+                
+                // await SetInternalValueAsync(InputValue);
+                // InternalValue = InputValue;
 
                 StateHasChanged();
             }
@@ -740,7 +747,8 @@ namespace Masa.Blazor
 
                 if (BindConverter.TryConvertTo<TValue>(value.ToString(), System.Globalization.CultureInfo.InvariantCulture, out var internalValue))
                 {
-                    await SetInternalValueAsync(internalValue);
+                    // await SetInternalValueAsync(internalValue);
+                    InternalValue = internalValue;
                 }
             }
 
@@ -764,7 +772,8 @@ namespace Masa.Blazor
 
                 if (BindConverter.TryConvertTo<TValue>(value.ToString(), System.Globalization.CultureInfo.InvariantCulture, out var internalValue))
                 {
-                    await SetInternalValueAsync(internalValue);
+                    // await SetInternalValueAsync(internalValue);
+                    InternalValue = internalValue;
                 }
             }
 
@@ -810,8 +819,9 @@ namespace Masa.Blazor
 
         public virtual async Task HandleOnClearClickAsync(MouseEventArgs args)
         {
-            await SetInternalValueAsync(default);
-
+            // await SetInternalValueAsync(default);
+            InternalValue = default;
+            
             if (OnClearClick.HasDelegate)
             {
                 await OnClearClick.InvokeAsync(args);

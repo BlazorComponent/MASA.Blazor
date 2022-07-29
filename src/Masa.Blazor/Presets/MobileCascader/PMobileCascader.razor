@@ -1,0 +1,47 @@
+﻿@namespace Masa.Blazor.Presets
+@typeparam TItem
+@typeparam TItemValue
+
+<MBottomSheet ContentClass="p-mobile-cascader__content"
+              Value="Visible"
+              ValueChanged="HandleVisibleChanged">
+    <ActivatorContent>
+        @ActivatorContent?.Invoke(context)
+    </ActivatorContent>
+    <ChildContent>
+        <MSheet Class="d-flex justify-space-between">
+            <MButton Plain Color="primary" OnClick="OnCancel">@I18n.T("$masaBlazor.cancel")</MButton>
+            <div class="p-mobile-cascader__title">@Title</div>
+            <MButton Plain Color="primary" OnClick="OnConfirm">@I18n.T("$masaBlazor.ok")</MButton>
+        </MSheet>
+
+        <MTabs Value="@_tabIndex" ValueChanged="val => _tabIndex = val.AsT1">
+            @foreach (var tab in ComputedTabs)
+            {
+                <MTab>@tab</MTab>
+            }
+        </MTabs>
+
+        <MList Dense Height="@Height">
+            @foreach (var item in CurrentItems)
+            {
+                <MListItem OnClick="() => OnItemClick(item)"
+                           Disabled="@IsDisabled(item)">
+                    <MListItemContent>
+                        <MListItemTitle>@ItemText(item)</MListItemTitle>
+                    </MListItemContent>
+                    <MListItemIcon Class="align-center">
+                        @if (item.Equals(_loadingItem))
+                        {
+                            <MProgressCircular Size="20" Width="2" Indeterminate></MProgressCircular>
+                        }
+                        else if (SelectedItems.Contains(item))
+                        {
+                            <MIcon Color="primary" Dense>mdi-check</MIcon>
+                        }
+                    </MListItemIcon>
+                </MListItem>
+            }
+        </MList>
+    </ChildContent>
+</MBottomSheet>

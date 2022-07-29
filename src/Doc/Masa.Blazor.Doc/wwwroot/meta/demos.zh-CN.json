@@ -46,6 +46,14 @@
           },
           {
             "Order": 0,
+            "Title": "Mobile cascader",
+            "SubTitle": "移动端级联",
+            "FullTitle": "Mobile cascader (移动端级联)",
+            "Type": "menuItem",
+            "Url": "components/mobile-cascader"
+          },
+          {
+            "Order": 0,
             "Title": "Modals",
             "SubTitle": "对话框",
             "FullTitle": "Modals (对话框)",

@@ -832,6 +832,13 @@
           },
           {
             "Order": 0,
+            "Title": "Mobile cascader",
+            "FullTitle": "Mobile cascader",
+            "Type": "menuItem",
+            "Url": "components/mobile-cascader"
+          },
+          {
+            "Order": 0,
             "Title": "Modals",
             "FullTitle": "Modals",
             "Type": "menuItem",

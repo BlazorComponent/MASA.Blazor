@@ -1,0 +1,67 @@
+﻿<MRow Align="AlignTypes.Baseline">
+    <MCol Cols="12" Md="6">
+        <MButton OnClick="() => visible = true">Select</MButton>
+        <PMobileCascader @bind-Value="value"
+                         @bind-Visible="visible"
+                         Title="省市区"
+                         Items="Datas"
+                         ItemText="d => d.Name"
+                         ItemValue="d => d.Code"
+                         ItemChildren="d => d.Children"
+                         ItemDisabled="d => d.Disabled">
+        </PMobileCascader>
+    </MCol>
+    <MCol Cols="12" Md="6">
+        Selected values: @string.Join(",", value)
+    </MCol>
+</MRow>
+
+@code {
+
+    List<string> value = new();
+
+    bool visible;
+
+    record Data(string Code, string Name, List<Data> Children = null, bool Disabled = false);
+
+    static readonly List<Data> Datas = new List<Data>()
+    {
+        new Data("sh", "上海", new List<Data>()
+        {
+            new Data("sh-hp", "黄浦区"),
+            new Data("sh-xh", "徐汇区"),
+            new Data("sh-cn", "长宁区"),
+            new Data("sh-ja", "静安区", Disabled: true),
+        }),
+        new Data("zj", "浙江", new List<Data>()
+        {
+            new Data("zj-hz", "杭州", new List<Data>()
+            {
+                new Data("zj-hz-sc", "上城区"),
+                new Data("zj-hz-xc", "下城区"),
+                new Data("zj-hz-qt", "钱塘区"),
+            }),
+            new Data("zj-nb", "宁波", new List<Data>()
+            {
+                new Data("zj-nb-jb", "江北区"),
+                new Data("zj-nb-hs", "海曙区"),
+                new Data("zj-nb-bl", "北仑区"),
+            }),
+        }),
+        new Data("gd", "广东", new List<Data>()
+        {
+            new Data("gd-sz", "深圳", new List<Data>()
+            {
+                new Data("gd-sz-ns", "南山区"),
+                new Data("gd-sz-lh", "罗湖区"),
+            }),
+            new Data("gd-gz", "广州", new List<Data>()
+            {
+                new Data("gd-gz-by", "白云区"),
+                new Data("gd-gz-th", "天河区"),
+                new Data("gd-gz-hz", "海珠区"),
+            }),
+        }),
+    };
+
+}

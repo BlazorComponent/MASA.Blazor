@@ -1,0 +1,91 @@
+﻿<MRow Align="AlignTypes.Baseline">
+    <MCol Cols="12" Md="6">
+        <PMobileCascader @bind-Value="value"
+                         TItem="Data"
+                         TItemValue="string"
+                         Title="省市区"
+                         Items="Datas"
+                         ItemText="d => d.Name"
+                         ItemValue="d => d.Code"
+                         ItemChildren="d => d.Children"
+                         ItemDisabled="d => d.Disabled"
+                         OnLoadChildren="HandleOnLoadChildren">
+            <ActivatorContent>
+                <MButton @attributes="@context.Attrs">Select</MButton>
+            </ActivatorContent>
+        </PMobileCascader>
+    </MCol>
+    <MCol Cols="12" Md="6">
+        Selected values: @string.Join(",", value)
+    </MCol>
+</MRow>
+
+@code {
+
+    List<string> value = new();
+
+    private async Task HandleOnLoadChildren(Data item)
+    {
+        // mock the http request
+        await Task.Delay(1000);
+
+        item.Children = item.Code switch
+        {
+            "china" => new List<Data>()
+            {
+                new("sh", "上海"), new("zj", "浙江"), new("gd", "广东"),
+            },
+            "sh" => new List<Data>()
+            {
+                new("sh-hp", "黄浦区"), new("sh-xh", "徐汇区"), new("sh-cn", "长宁区"), new("sh-ja", "静安区", disabled: true),
+            },
+            "zj" => new List<Data>()
+            {
+                new("zj-hz", "杭州"), new("zj-nb", "宁波"),
+            },
+            "gd" => new List<Data>()
+            {
+                new("gd-sz", "深圳"), new("gd-gz", "广州"),
+            },
+            "zj-hz" => new List<Data>()
+            {
+                new("zj-hz-sc", "上城区"), new("zj-hz-xc", "下城区"), new("zj-hz-qt", "钱塘区"),
+            },
+            "zj-nb" => new List<Data>()
+            {
+                new("zj-nb-jb", "江北区"), new("zj-nb-hs", "海曙区"), new("zj-nb-bl", "北仑区"),
+            },      
+            "gd-sz" => new List<Data>()
+            {
+                new("gd-sz-ns", "南山区"), new("gd-sz-lh", "罗湖区"),
+            },            
+            "gd-gz" => new List<Data>()
+            {
+                new("gd-gz-by", "白云区"), new("gd-gz-th", "天河区"), new("gd-gz-hz", "海珠区"),
+            },
+            _ => new List<Data>()
+        };
+    }
+
+    class Data
+    {
+        public string Name { get; set; }
+        public string Code { get; set; }
+        public List<Data> Children { get; set; }
+        public bool Disabled { get; set; }
+
+        public Data(string code, string name, List<Data> children = null, bool disabled = false)
+        {
+            Code = code;
+            Name = name;
+            Children = children;
+            Disabled = disabled;
+        }
+    }
+
+    static readonly List<Data> Datas = new()
+    {
+        new Data("china", "中国")
+    };
+
+}

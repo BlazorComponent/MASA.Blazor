@@ -536,7 +536,6 @@ input[type=number] {
 }
 
 .m-toast-text {
-    font-family: 'Roboto';
     font-style: normal;
     font-weight: 500;
 }
@@ -559,4 +558,14 @@ input[type=number] {
 .m-captcha-container .m-image {
     cursor: pointer;
     border-radius: 4px;
+}
+
+/* mobile cascader */
+
+.p-mobile-cascader__content .m-tabs-bar {
+    height: 36px;
+}
+
+.p-mobile-cascader__content .m-tab {
+    min-width: 64px;
 }

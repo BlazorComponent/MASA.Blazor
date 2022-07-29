@@ -1,0 +1,54 @@
+﻿<MCarousel
+    Cycle
+    Height="400"
+    HideDelimiterBackground
+    ShowArrowsOnHover>
+    <PrevContent>
+        <MButton Color="success" OnClick="context">Previous slide</MButton>
+    </PrevContent>
+    <NextContent>
+        <MButton Color="info" OnClick="context">Next slide</MButton>
+    </NextContent>
+    <ChildContent>
+        @for (int i = 0; i < slides.Length; i++)
+        {
+            var index = i;
+            <MCarouselItem>
+                <MSheet
+                    Color="@colors[index]"
+                    Height="@("100%")">
+                    <MRow
+                        Class="fill-height"
+                        Align="AlignTypes.Center"
+                        Justify="JustifyTypes.Center">
+                        <div class="text-h2">
+                            @slides[index] Slide
+                        </div>
+                    </MRow>
+                </MSheet>
+            </MCarouselItem>
+        }
+    </ChildContent>
+</MCarousel>
+
+@code {
+
+    private string[] colors = new[]
+    {
+        "indigo",
+        "warning",
+        "pink darken-2",
+        "red lighten-1",
+        "deep-purple accent-4",
+    };
+
+    private string[] slides = new[]
+    {
+        "First",
+        "Second",
+        "Third",
+        "Fourth",
+        "Fifth"
+    };
+
+}

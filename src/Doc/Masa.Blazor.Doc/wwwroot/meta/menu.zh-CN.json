@@ -464,6 +464,15 @@
       },
       {
         "Order": 0,
+        "Title": "Carousels",
+        "SubTitle": "轮播",
+        "FullTitle": "Carousels (轮播)",
+        "Type": "menuItem",
+        "Url": "components/carousels",
+        "Children": []
+      },
+      {
+        "Order": 0,
         "Title": "Chips",
         "SubTitle": "纸片",
         "FullTitle": "Chips (纸片)",
@@ -1734,6 +1743,64 @@
         "FullTitle": "MCardTitle",
         "Type": "menuItem",
         "Url": "api/mcardtitle",
+        "Contents": [
+          {
+            "Id": "section-292649107",
+            "Title": "组件页面",
+            "Level": 0
+          },
+          {
+            "Id": "section-3122241",
+            "Title": "属性",
+            "Level": 0
+          },
+          {
+            "Id": "section-3374707",
+            "Title": "插槽",
+            "Level": 0
+          },
+          {
+            "Id": "section-2654231",
+            "Title": "事件",
+            "Level": 0
+          }
+        ]
+      },
+      {
+        "Order": 0,
+        "Title": "MCarousel",
+        "FullTitle": "MCarousel",
+        "Type": "menuItem",
+        "Url": "api/mcarousel",
+        "Contents": [
+          {
+            "Id": "section-292649107",
+            "Title": "组件页面",
+            "Level": 0
+          },
+          {
+            "Id": "section-3122241",
+            "Title": "属性",
+            "Level": 0
+          },
+          {
+            "Id": "section-3374707",
+            "Title": "插槽",
+            "Level": 0
+          },
+          {
+            "Id": "section-2654231",
+            "Title": "事件",
+            "Level": 0
+          }
+        ]
+      },
+      {
+        "Order": 0,
+        "Title": "MCarouselItem",
+        "FullTitle": "MCarouselItem",
+        "Type": "menuItem",
+        "Url": "api/mcarouselitem",
         "Contents": [
           {
             "Id": "section-292649107",

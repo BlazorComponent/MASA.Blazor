@@ -1,0 +1,177 @@
+﻿{
+  "Title": "MCarousel",
+  "Components": [
+    "Carousels"
+  ],
+  "Props": [
+    {
+      "Name": "ActiveClass",
+      "Type": "String",
+      "Description": ""
+    },
+    {
+      "Name": "Class",
+      "Type": "String",
+      "Description": "The class applied to the outermost element of the component"
+    },
+    {
+      "Name": "Continuous",
+      "Type": "Boolean",
+      "Description": ""
+    },
+    {
+      "Name": "Cycle",
+      "Type": "Boolean",
+      "Description": ""
+    },
+    {
+      "Name": "Dark",
+      "Type": "Boolean",
+      "Description": "Applies the dark theme variant to the component."
+    },
+    {
+      "Name": "DelimiterIcon",
+      "Type": "String",
+      "Description": ""
+    },
+    {
+      "Name": "Height",
+      "Type": "StringNumber",
+      "Description": "Sets the height for the component."
+    },
+    {
+      "Name": "HideDelimiterBackground",
+      "Type": "Boolean",
+      "Description": ""
+    },
+    {
+      "Name": "HideDelimiters",
+      "Type": "Boolean",
+      "Description": ""
+    },
+    {
+      "Name": "Id",
+      "Type": "String",
+      "Description": ""
+    },
+    {
+      "Name": "Interval",
+      "Type": "Int32",
+      "Description": ""
+    },
+    {
+      "Name": "Light",
+      "Type": "Boolean",
+      "Description": ""
+    },
+    {
+      "Name": "Mandatory",
+      "Type": "Boolean",
+      "Description": ""
+    },
+    {
+      "Name": "Max",
+      "Type": "StringNumber",
+      "Description": ""
+    },
+    {
+      "Name": "Multiple",
+      "Type": "Boolean",
+      "Description": ""
+    },
+    {
+      "Name": "NextIcon",
+      "Type": "String",
+      "Description": ""
+    },
+    {
+      "Name": "PrevIcon",
+      "Type": "String",
+      "Description": ""
+    },
+    {
+      "Name": "Progress",
+      "Type": "Boolean",
+      "Description": ""
+    },
+    {
+      "Name": "ProgressColor",
+      "Type": "String",
+      "Description": ""
+    },
+    {
+      "Name": "Reverse",
+      "Type": "Boolean",
+      "Description": ""
+    },
+    {
+      "Name": "ShowArrows",
+      "Type": "Boolean",
+      "Description": ""
+    },
+    {
+      "Name": "ShowArrowsOnHover",
+      "Type": "Boolean",
+      "Description": ""
+    },
+    {
+      "Name": "Style",
+      "Type": "String",
+      "Description": "The style applied to the outermost element of the component"
+    },
+    {
+      "Name": "TargetGroup",
+      "Type": "Nullable<GroupType>",
+      "Description": ""
+    },
+    {
+      "Name": "Value",
+      "Type": "StringNumber",
+      "Description": ""
+    },
+    {
+      "Name": "Values",
+      "Type": "List<StringNumber>",
+      "Description": ""
+    },
+    {
+      "Name": "Vertical",
+      "Type": "Boolean",
+      "Description": ""
+    },
+    {
+      "Name": "VerticalDelimiters",
+      "Type": "String",
+      "Description": ""
+    }
+  ],
+  "Contents": [
+    {
+      "Name": "ChildContent",
+      "Type": "RenderFragment",
+      "Description": "Default Content"
+    },
+    {
+      "Name": "NextContent",
+      "Type": "RenderFragment<Action>",
+      "Description": ""
+    },
+    {
+      "Name": "PrevContent",
+      "Type": "RenderFragment<Action>",
+      "Description": ""
+    }
+  ],
+  "Events": [
+    {
+      "Name": "ValueChanged",
+      "Type": "EventCallback<StringNumber>",
+      "Description": ""
+    },
+    {
+      "Name": "ValuesChanged",
+      "Type": "EventCallback<List`1>",
+      "Description": ""
+    }
+  ]
+}

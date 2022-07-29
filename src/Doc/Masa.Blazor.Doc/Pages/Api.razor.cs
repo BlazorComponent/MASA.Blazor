@@ -39,6 +39,8 @@ public partial class Api
         "MCardSubtitle",
         "MCardText",
         "MCardTitle",
+        "MCarousel",
+        "MCarouselItem",
         "MCascader",
         "MCascaderMenu",
         "MCascaderSelectList",

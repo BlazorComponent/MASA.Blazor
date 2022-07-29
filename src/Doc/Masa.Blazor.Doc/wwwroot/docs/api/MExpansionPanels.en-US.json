@@ -105,6 +105,11 @@
       "Description": "The style applied to the outermost element of the component"
     },
     {
+      "Name": "TargetGroup",
+      "Type": "Nullable<GroupType>",
+      "Description": ""
+    },
+    {
       "Name": "Tile",
       "Type": "Boolean",
       "Default": "false",

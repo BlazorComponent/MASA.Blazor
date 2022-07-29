@@ -41,7 +41,8 @@ namespace Masa.Blazor
                     cssBuilder
                         .Add("m-window")
                         .Add("m-item-group")
-                        .AddIf("m-window--show-arrows-on-hover", () => ShowArrowsOnHover);
+                        .AddIf("m-window--show-arrows-on-hover", () => ShowArrowsOnHover)
+                        .AddTheme(IsDark);
                 })
                 .Apply("container", cssBuilder =>
                 {

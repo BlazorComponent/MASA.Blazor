@@ -436,6 +436,14 @@
       },
       {
         "Order": 0,
+        "Title": "Carousels",
+        "FullTitle": "Carousels",
+        "Type": "menuItem",
+        "Url": "components/carousels",
+        "Children": []
+      },
+      {
+        "Order": 0,
         "Title": "Chips",
         "FullTitle": "Chips",
         "Type": "menuItem",
@@ -1634,6 +1642,64 @@
         "FullTitle": "MCardTitle",
         "Type": "menuItem",
         "Url": "api/mcardtitle",
+        "Contents": [
+          {
+            "Id": "section-1559607740",
+            "Title": "Component Pages",
+            "Level": 0
+          },
+          {
+            "Id": "section-1029938464",
+            "Title": "Props",
+            "Level": 0
+          },
+          {
+            "Id": "section-444565322",
+            "Title": "Contents",
+            "Level": 0
+          },
+          {
+            "Id": "section-1613329801",
+            "Title": "Events",
+            "Level": 0
+          }
+        ]
+      },
+      {
+        "Order": 0,
+        "Title": "MCarousel",
+        "FullTitle": "MCarousel",
+        "Type": "menuItem",
+        "Url": "api/mcarousel",
+        "Contents": [
+          {
+            "Id": "section-1559607740",
+            "Title": "Component Pages",
+            "Level": 0
+          },
+          {
+            "Id": "section-1029938464",
+            "Title": "Props",
+            "Level": 0
+          },
+          {
+            "Id": "section-444565322",
+            "Title": "Contents",
+            "Level": 0
+          },
+          {
+            "Id": "section-1613329801",
+            "Title": "Events",
+            "Level": 0
+          }
+        ]
+      },
+      {
+        "Order": 0,
+        "Title": "MCarouselItem",
+        "FullTitle": "MCarouselItem",
+        "Type": "menuItem",
+        "Url": "api/mcarouselitem",
         "Contents": [
           {
             "Id": "section-1559607740",

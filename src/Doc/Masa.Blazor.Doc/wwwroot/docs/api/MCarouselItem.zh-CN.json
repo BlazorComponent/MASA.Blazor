@@ -1,0 +1,92 @@
+﻿{
+  "Title": "MCarouselItem",
+  "Components": [
+    "Carousels"
+  ],
+  "Props": [
+    {
+      "Name": "ActiveClass",
+      "Type": "String",
+      "Description": ""
+    },
+    {
+      "Name": "Class",
+      "Type": "String",
+      "Description": "应用到组件最外层元素的class"
+    },
+    {
+      "Name": "Disabled",
+      "Type": "Boolean",
+      "Description": ""
+    },
+    {
+      "Name": "Href",
+      "Type": "String",
+      "Description": ""
+    },
+    {
+      "Name": "Id",
+      "Type": "String",
+      "Description": ""
+    },
+    {
+      "Name": "IsActive",
+      "Type": "Boolean",
+      "Description": ""
+    },
+    {
+      "Name": "Link",
+      "Type": "Boolean",
+      "Description": ""
+    },
+    {
+      "Name": "ReverseTransition",
+      "Type": "String",
+      "Description": ""
+    },
+    {
+      "Name": "Src",
+      "Type": "String",
+      "Description": ""
+    },
+    {
+      "Name": "Style",
+      "Type": "String",
+      "Description": "应用到组件最外层元素的style"
+    },
+    {
+      "Name": "Tag",
+      "Type": "String",
+      "Description": ""
+    },
+    {
+      "Name": "Target",
+      "Type": "String",
+      "Description": ""
+    },
+    {
+      "Name": "Transition",
+      "Type": "String",
+      "Description": ""
+    },
+    {
+      "Name": "Value",
+      "Type": "StringNumber",
+      "Description": ""
+    }
+  ],
+  "Contents": [
+    {
+      "Name": "ChildContent",
+      "Type": "RenderFragment",
+      "Description": "默认插槽"
+    }
+  ],
+  "Events": [
+    {
+      "Name": "OnClick",
+      "Type": "EventCallback<MouseEventArgs>",
+      "Description": ""
+    }
+  ]
+}

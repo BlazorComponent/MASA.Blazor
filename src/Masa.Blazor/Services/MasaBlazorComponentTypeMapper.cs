@@ -14,6 +14,7 @@
             { typeof(BMenu), typeof(MMenu) },
             { typeof(BList), typeof(MList) },
             { typeof(BItemGroup), typeof(MItemGroup) },
+            { typeof(BButtonGroup), typeof(MButtonGroup) },
             { typeof(BDataFooter), typeof(MDataFooter) },
             { typeof(BSimpleCheckbox), typeof(MSimpleCheckbox) },
             { typeof(BDataTableRowGroup), typeof(MDataTableRowGroup) },
@@ -32,7 +33,7 @@
             { typeof(BListItemContent), typeof(MListItemContent) },
             { typeof(BListItemAction), typeof(MListItemAction) },
             { typeof(BListItemTitle), typeof(MListItemTitle) },
-            { typeof(BSlideGroup), typeof(MTabsBar) },//We will remove this when Decorator come up
+            { typeof(BSlideGroup), typeof(MTabsBar) }, //We will remove this when Decorator come up
             { typeof(BWindow), typeof(MWindow) },
             { typeof(BWindowItem), typeof(MWindowItem) },
             { typeof(BCounter), typeof(MCounter) },
@@ -42,8 +43,9 @@
             { typeof(BDivider), typeof(MDivider) },
             { typeof(BSubheader), typeof(MSubheader) },
             { typeof(BTab), typeof(MTab) },
-
+            { typeof(BResponsive), typeof(MImage) }
         };
+
         private readonly Dictionary<Type, Type> _genericMapper = new()
         {
             { typeof(BSelectList<,,>), typeof(MSelectList<,,>) },

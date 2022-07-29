@@ -37,6 +37,8 @@ namespace Masa.Blazor.Doc.CLI.Commands
             { "MCardSubtitle", new string[] { "Cards" } },
             { "MCardText", new string[] { "Cards" } },
             { "MCardTitle", new string[] { "Cards" } },
+            { "MCarousel", new string[] { "Carousels" } },
+            { "MCarouselItem", new string[] { "Carousels" } },
             { "MCascader", new string[] { "Cascaders" } },
             { "MCascaderMenu", new string[] { "Cascaders" } },
             { "MCascaderSelectList", new string[] { "Cascaders" } },

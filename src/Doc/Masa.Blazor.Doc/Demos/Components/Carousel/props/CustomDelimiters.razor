@@ -1,0 +1,76 @@
+﻿<MCard
+    Elevation="24"
+    MaxWidth="444"
+    Class="mx-auto">
+    <MSystemBar LightsOut></MSystemBar>
+    <MCarousel
+        Continuous="false"
+        Cycle="@cycle"
+        ShowArrows="false"
+        HideDelimiterBackground
+        DelimiterIcon="mdi-minus"
+        Height="300">
+        @for (int i = 0; i < slides.Length; i++)
+        {
+            var index = i;
+            <MCarouselItem>
+                <MSheet
+                    Color="@colors[index]"
+                    Height="@("100%")"
+                    Tile>
+                    <MRow
+                        Class="fill-height"
+                        Align="AlignTypes.Center"
+                        Justify="JustifyTypes.Center">
+                        <div class="text-h2">
+                            @slides[index] Slide
+                        </div>
+                    </MRow>
+                </MSheet>
+            </MCarouselItem>
+        }
+
+    </MCarousel>
+    <MList TwoLine>
+        <MListItem>
+            <MListItemAvatar>
+                <MImage src="https://cdn.masastack.com/stack/images/website/masa-blazor/doddgu.png"></MImage>
+            </MListItemAvatar>
+            <MListItemContent>
+                <MListItemTitle>doddgu</MListItemTitle>
+                <MListItemSubtitle>CTO</MListItemSubtitle>
+            </MListItemContent>
+            <MListItemAction>
+                <MSwitch
+                    @bind-Value="cycle"
+                    Label="Cycle Slides"
+                    Inset>
+                </MSwitch>
+            </MListItemAction>
+        </MListItem>
+    </MList>
+</MCard>
+
+@code {
+
+    private string[] colors = new[]
+    {
+        "green",
+        "secondary",
+        "yellow darken-4",
+        "red lighten-2",
+        "orange darken-1",
+    };
+
+    private bool cycle = false;
+
+    private string[] slides = new[]
+    {
+        "First",
+        "Second",
+        "Third",
+        "Fourth",
+        "Fifth"
+    };
+
+}

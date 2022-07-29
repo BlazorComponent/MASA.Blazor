@@ -120,6 +120,9 @@ namespace Masa.Blazor
                         .Add("m-window-item")
                         .AddIf("m-window-item--active", () => InternalIsActive);
                 });
+
+            AbstractProvider
+                .Apply(typeof(BWindowItemDefaultSlot<>), typeof(BWindowItemDefaultSlot<MWindowItem>));
         }
     }
 }

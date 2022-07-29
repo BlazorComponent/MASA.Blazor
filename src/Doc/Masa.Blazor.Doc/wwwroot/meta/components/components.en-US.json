@@ -1510,6 +1510,115 @@
     "FullTitle": "Cards"
   },
   {
+    "Desc": "<p>The <code>MCarousel</code> component is used to display large numbers of visual content on a rotating timer.</p>\n",
+    "Order": 0,
+    "OtherDocs": {
+      "API": "\n<ul>\n<li><a href=\"/api/MCarousel\">MCarousel</a></li>\n<li><a href=\"/api/MCarouselItem\">MCarouselItem</a></li>\n</ul>\n"
+    },
+    "LastWriteTime": "2022-07-29T17:49:54.9423238+08:00",
+    "DemoList": [
+      {
+        "Order": 0,
+        "Name": "index",
+        "Title": "Usage",
+        "Description": "<p>The <code>MCarousel</code> component expands upon <code>MWindow</code> by providing additional features targeted at displaying images.</p>\n",
+        "Code": "<MCarousel @bind-Value=\"value\">\r\n    @for (var i = 0; i < colors.Length; i++)\r\n    {\r\n        var index = i;\r\n\r\n        <MCarouselItem>\r\n            <MSheet Color=\"@colors[index]\" Height=\"@(\"100%\")\" Tile>\r\n                <MRow Class=\"fill-height\" Align=\"AlignTypes.Center\" Justify=\"JustifyTypes.Center\">\r\n                    <div class=\"text-h2\">Slide @(index + 1)</div>\r\n                </MRow>\r\n            </MSheet>\r\n        </MCarouselItem>\r\n    }\r\n</MCarousel>\r\n\r\n@code {\r\n\r\n    private StringNumber value;\r\n\r\n    private string[] colors = new[]\r\n    {\r\n        \"primary\",\r\n        \"secondary\",\r\n        \"yellow darken-2\",\r\n        \"red\",\r\n        \"orange\",\r\n    };\r\n\r\n}\r\n",
+        "Type": "Demos.Components.Carousel.usage.Index",
+        "Style": "",
+        "Debug": false,
+        "Group": 4
+      },
+      {
+        "Order": 0,
+        "Name": "customDelimiters",
+        "Title": "Custom delimiters",
+        "Description": "<p>Use any available icon as your carousel’s slide delimiter.</p>\n",
+        "Code": "<MCard\r\n    Elevation=\"24\"\r\n    MaxWidth=\"444\"\r\n    Class=\"mx-auto\">\r\n    <MSystemBar LightsOut></MSystemBar>\r\n    <MCarousel\r\n        Continuous=\"false\"\r\n        Cycle=\"@cycle\"\r\n        ShowArrows=\"false\"\r\n        HideDelimiterBackground\r\n        DelimiterIcon=\"mdi-minus\"\r\n        Height=\"300\">\r\n        @for (int i = 0; i < slides.Length; i++)\r\n        {\r\n            var index = i;\r\n            <MCarouselItem>\r\n                <MSheet\r\n                    Color=\"@colors[index]\"\r\n                    Height=\"@(\"100%\")\"\r\n                    Tile>\r\n                    <MRow\r\n                        Class=\"fill-height\"\r\n                        Align=\"AlignTypes.Center\"\r\n                        Justify=\"JustifyTypes.Center\">\r\n                        <div class=\"text-h2\">\r\n                            @slides[index] Slide\r\n                        </div>\r\n                    </MRow>\r\n                </MSheet>\r\n            </MCarouselItem>\r\n        }\r\n\r\n    </MCarousel>\r\n    <MList TwoLine>\r\n        <MListItem>\r\n            <MListItemAvatar>\r\n                <MImage src=\"https://cdn.masastack.com/stack/images/website/masa-blazor/doddgu.png\"></MImage>\r\n            </MListItemAvatar>\r\n            <MListItemContent>\r\n                <MListItemTitle>doddgu</MListItemTitle>\r\n                <MListItemSubtitle>CTO</MListItemSubtitle>\r\n            </MListItemContent>\r\n            <MListItemAction>\r\n                <MSwitch\r\n                    @bind-Value=\"cycle\"\r\n                    Label=\"Cycle Slides\"\r\n                    Inset>\r\n                </MSwitch>\r\n            </MListItemAction>\r\n        </MListItem>\r\n    </MList>\r\n</MCard>\r\n\r\n@code {\r\n\r\n    private string[] colors = new[]\r\n    {\r\n        \"green\",\r\n        \"secondary\",\r\n        \"yellow darken-4\",\r\n        \"red lighten-2\",\r\n        \"orange darken-1\",\r\n    };\r\n\r\n    private bool cycle = false;\r\n\r\n    private string[] slides = new[]\r\n    {\r\n        \"First\",\r\n        \"Second\",\r\n        \"Third\",\r\n        \"Fourth\",\r\n        \"Fifth\"\r\n    };\r\n\r\n}\r\n",
+        "Type": "Demos.Components.Carousel.props.CustomDelimiters",
+        "Style": "",
+        "Debug": false,
+        "Group": 0
+      },
+      {
+        "Order": 0,
+        "Name": "customizedArrows",
+        "Title": "Customized arrows",
+        "Description": "<p>Arrows can be customized by using <strong>PrevContent</strong> and <strong>NextContent</strong> contents.</p>\n",
+        "Code": "<MCarousel\r\n    Cycle\r\n    Height=\"400\"\r\n    HideDelimiterBackground\r\n    ShowArrowsOnHover>\r\n    <PrevContent>\r\n        <MButton Color=\"success\" OnClick=\"context\">Previous slide</MButton>\r\n    </PrevContent>\r\n    <NextContent>\r\n        <MButton Color=\"info\" OnClick=\"context\">Next slide</MButton>\r\n    </NextContent>\r\n    <ChildContent>\r\n        @for (int i = 0; i < slides.Length; i++)\r\n        {\r\n            var index = i;\r\n            <MCarouselItem>\r\n                <MSheet\r\n                    Color=\"@colors[index]\"\r\n                    Height=\"@(\"100%\")\">\r\n                    <MRow\r\n                        Class=\"fill-height\"\r\n                        Align=\"AlignTypes.Center\"\r\n                        Justify=\"JustifyTypes.Center\">\r\n                        <div class=\"text-h2\">\r\n                            @slides[index] Slide\r\n                        </div>\r\n                    </MRow>\r\n                </MSheet>\r\n            </MCarouselItem>\r\n        }\r\n    </ChildContent>\r\n</MCarousel>\r\n\r\n@code {\r\n\r\n    private string[] colors = new[]\r\n    {\r\n        \"indigo\",\r\n        \"warning\",\r\n        \"pink darken-2\",\r\n        \"red lighten-1\",\r\n        \"deep-purple accent-4\",\r\n    };\r\n\r\n    private string[] slides = new[]\r\n    {\r\n        \"First\",\r\n        \"Second\",\r\n        \"Third\",\r\n        \"Fourth\",\r\n        \"Fifth\"\r\n    };\r\n\r\n}\r\n",
+        "Type": "Demos.Components.Carousel.props.CustomizedArrows",
+        "Style": "",
+        "Debug": false,
+        "Group": 0
+      },
+      {
+        "Order": 0,
+        "Name": "customTransition",
+        "Title": "Custom transition",
+        "Description": "<p>The <code>MCarouselItem</code> component can have its <strong>transition/reverse-transition</strong> changed.</p>\n",
+        "Code": "<MCarousel>\r\n    @foreach (var item in items)\r\n    {\r\n        <MCarouselItem\r\n            Src=\"@item\"\r\n            ReverseTransition=\"fade-transition\"\r\n            Transition=\"fade-transition\">\r\n        </MCarouselItem>\r\n    }\r\n</MCarousel>\r\n\r\n@code\r\n{\r\n    private string[] items = new[]\r\n    {\r\n        \"https://cdn.masastack.com/stack/images/website/masa-blazor/carousel/squirrel.jpg\",\r\n        \"https://cdn.masastack.com/stack/images/website/masa-blazor/carousel/sky.jpg\",\r\n        \"https://cdn.masastack.com/stack/images/website/masa-blazor/carousel/bird.jpg\",\r\n        \"https://cdn.masastack.com/stack/images/website/masa-blazor/carousel/planet.jpg\",\r\n    };\r\n}\r\n",
+        "Type": "Demos.Components.Carousel.props.CustomTransition",
+        "Style": "",
+        "Debug": false,
+        "Group": 0
+      },
+      {
+        "Order": 0,
+        "Name": "cycle",
+        "Title": "Cycle",
+        "Description": "<p>With the <strong>Cycle</strong> parameter you can have your slides automatically transition to the next available every 6s (default).</p>\n",
+        "Code": "<MCarousel\r\n    Cycle\r\n    Height=\"400\"\r\n    HideDelimiterBackground\r\n    ShowArrowsOnHover>\r\n    @for (int i = 0; i < slides.Length; i++)\r\n    {\r\n        var index = i;\r\n        <MCarouselItem>\r\n            <MSheet\r\n                Color=\"@colors[index]\"\r\n                Height=\"@(\"100%\")\">\r\n                <MRow\r\n                    Class=\"fill-height\"\r\n                    Align=\"AlignTypes.Center\"\r\n                    Justify=\"JustifyTypes.Center\">\r\n                    <div class=\"text-h2\">\r\n                        @slides[index] Slide\r\n                    </div>\r\n                </MRow>\r\n            </MSheet>\r\n        </MCarouselItem>\r\n    }\r\n\r\n</MCarousel>\r\n\r\n@code {\r\n\r\n    private string[] colors = new[]\r\n    {\r\n        \"indigo\",\r\n        \"warning\",\r\n        \"pink darken-2\",\r\n        \"red lighten-1\",\r\n        \"deep-purple accent-4\",\r\n    };\r\n\r\n    private string[] slides = new[]\r\n    {\r\n        \"First\",\r\n        \"Second\",\r\n        \"Third\",\r\n        \"Fourth\",\r\n        \"Fifth\"\r\n    };\r\n\r\n}\r\n",
+        "Type": "Demos.Components.Carousel.props.Cycle",
+        "Style": "",
+        "Debug": false,
+        "Group": 0
+      },
+      {
+        "Order": 0,
+        "Name": "hideControls",
+        "Title": "Hide controls",
+        "Description": "<p>You can hide the carousel navigation controls with <code>ShowArrows=&quot;false&quot;</code>.</p>\n",
+        "Code": "<MCarousel ShowArrows=\"false\" @bind-Value=\"value\">\r\n    @foreach (var item in items)\r\n    {\r\n        <MCarouselItem Src=\"@item\" @key=\"item\">\r\n        </MCarouselItem>\r\n    }\r\n</MCarousel>\r\n\r\n@code {\r\n\r\n    private string[] items = new[]\r\n    {\r\n        \"https://cdn.masastack.com/stack/images/website/masa-blazor/carousel/squirrel.jpg\",\r\n        \"https://cdn.masastack.com/stack/images/website/masa-blazor/carousel/sky.jpg\",\r\n        \"https://cdn.masastack.com/stack/images/website/masa-blazor/carousel/bird.jpg\",\r\n        \"https://cdn.masastack.com/stack/images/website/masa-blazor/carousel/planet.jpg\",\r\n    };\r\n\r\n    private StringNumber value = 0;\r\n}\r\n",
+        "Type": "Demos.Components.Carousel.props.HideControls",
+        "Style": "",
+        "Debug": false,
+        "Group": 0
+      },
+      {
+        "Order": 0,
+        "Name": "hideDelimiters",
+        "Title": "Hide delimiters",
+        "Description": "<p>You can hide the bottom controls with <strong>HideDelimiters</strong> parameter.</p>\n",
+        "Code": "<MCarousel HideDelimiters>\r\n    @foreach (var item in items)\r\n    {\r\n        <MCarouselItem Src=\"@item\">\r\n        </MCarouselItem>\r\n    }\r\n</MCarousel>\r\n\r\n@code {\r\n\r\n    private string[] items = new[]\r\n    {\r\n        \"https://cdn.masastack.com/stack/images/website/masa-blazor/carousel/squirrel.jpg\",\r\n        \"https://cdn.masastack.com/stack/images/website/masa-blazor/carousel/sky.jpg\",\r\n        \"https://cdn.masastack.com/stack/images/website/masa-blazor/carousel/bird.jpg\",\r\n        \"https://cdn.masastack.com/stack/images/website/masa-blazor/carousel/planet.jpg\",\r\n    };\r\n\r\n}\r\n",
+        "Type": "Demos.Components.Carousel.props.HideDelimiters",
+        "Style": "",
+        "Debug": false,
+        "Group": 0
+      },
+      {
+        "Order": 0,
+        "Name": "model",
+        "Title": "Model",
+        "Description": "<p>You can control carousel with <strong>Value</strong>.</p>\n",
+        "Code": "<div>\r\n    <MRow Justify=\"JustifyTypes.SpaceAround\" NoGutters>\r\n        <MIcon OnClick=\"() => Value--\">\r\n            mdi-minus\r\n        </MIcon>\r\n        @Value\r\n        <MIcon OnClick=\"() => Value++\">\r\n            mdi-plus\r\n        </MIcon>\r\n    </MRow>\r\n    <MCarousel Value=\"Value\" ValueChanged=\"v => Value = v.AsT1\">\r\n        @for (var i = 0; i < colors.Length; i++)\r\n        {\r\n            var index = i;\r\n\r\n            <MCarouselItem>\r\n                <MSheet Color=\"@colors[index]\" Height=\"@(\"100%\")\" Tile>\r\n                    <MRow Class=\"fill-height\" Align=\"AlignTypes.Center\" Justify=\"JustifyTypes.Center\">\r\n                        <div class=\"text-h2\">Slide @(index + 1)</div>\r\n                    </MRow>\r\n                </MSheet>\r\n            </MCarouselItem>\r\n        }\r\n    </MCarousel>\r\n</div>\r\n\r\n@code {\r\n\r\n    private int _value;\r\n\r\n    private string[] colors = new[]\r\n    {\r\n        \"primary\",\r\n        \"secondary\",\r\n        \"yellow darken-2\",\r\n        \"red\",\r\n        \"orange\",\r\n    };\r\n\r\n    private int Value\r\n    {\r\n        get => _value;\r\n        set\r\n        {\r\n            if (value >= colors.Length)\r\n            {\r\n                _value = 0;\r\n            }\r\n            else if (value < 0)\r\n            {\r\n                _value = colors.Length - 1;\r\n            }\r\n            else\r\n            {\r\n                _value = value;\r\n            }\r\n        }\r\n    }\r\n\r\n}\r\n",
+        "Type": "Demos.Components.Carousel.props.Model",
+        "Style": "",
+        "Debug": false,
+        "Group": 0
+      }
+    ],
+    "Children": [],
+    "Category": "Components",
+    "Cols": 1,
+    "Related": [
+      "/components/parallax",
+      "/components/images",
+      "/components/windows"
+    ],
+    "Title": "Carousels",
+    "Type": "Carousels",
+    "FullTitle": "Carousels"
+  },
+  {
     "Desc": "<p>The <code>MChip</code> component is used to convey small pieces of information. Using the close property, the chip becomes\ninteractive, allowing user interaction. This component is used by the <a href=\"/components/chip-groups\">MChipGroup</a> for advanced selection options.</p>\n",
     "Order": 0,
     "OtherDocs": {
@@ -2687,7 +2796,7 @@
         "Name": "changeOnSelect",
         "Title": "Change on select",
         "Description": "<p>Allow you to select a parent item.</p>\n",
-        "Code": "<MRow>\r\n    <MCol Cols=\"12\" Md=\"6\">\r\n        <MCascader @bind-Value=\"_value\"\r\n                   ChangeOnSelect\r\n                   Items=\"_items\"\r\n                   ItemText=\"u => u.Label\"\r\n                   ItemValue=\"u => u.Value\"\r\n                   ItemChildren=\"u => u.Children\">\r\n        </MCascader>\r\n    </MCol>\r\n    <MCol Cols=\"12\" Md=\"6\">\r\n        Selected value is: @_value\r\n    </MCol>\r\n</MRow>\r\n\r\n@code {\r\n\r\n    public class CascaderNode\r\n    {\r\n        public string Value { get; set; }\r\n        public string Label { get; set; }\r\n        public List<CascaderNode> Children { get; set; }\r\n    }\r\n\r\n    private string _value;\r\n\r\n    private List<CascaderNode> _items = new List<CascaderNode>()\r\n    {\r\n        new CascaderNode()\r\n        {\r\n            Value = \"1\",\r\n            Label = \"湖北\",\r\n            Children = new List<CascaderNode>()\r\n            {\r\n                new CascaderNode\r\n                {\r\n                    Value = \"11\", Label = \"武汉\", Children = new List<CascaderNode>()\r\n                    {\r\n                        new CascaderNode\r\n                        {\r\n                            Value = \"111\", Label = \"武昌区\", Children = new List<CascaderNode>()\r\n                            {\r\n                                new CascaderNode { Value = \"1111\", Label = \"黄鹤楼街道\" },\r\n                                new CascaderNode { Value = \"1112\", Label = \"白沙洲街道\" }\r\n                            }\r\n                        },\r\n                        new CascaderNode { Value = \"112\", Label = \"洪山区\" }\r\n                    }\r\n                },\r\n                new CascaderNode { Value = \"12\", Label = \"黄石\" },\r\n                new CascaderNode { Value = \"13\", Label = \"宜昌\" }\r\n            }\r\n        },\r\n        new CascaderNode()\r\n        {\r\n            Value = \"2\",\r\n            Label = \"浙江\",\r\n            Children = new List<CascaderNode>()\r\n            {\r\n                new CascaderNode { Value = \"21\", Label = \"杭州\" },\r\n                new CascaderNode { Value = \"22\", Label = \"温州\" },\r\n                new CascaderNode { Value = \"23\", Label = \"义乌\" },\r\n                new CascaderNode { Value = \"24\", Label = \"宁波\" }\r\n            }\r\n        },\r\n        new CascaderNode()\r\n        {\r\n            Value = \"3\",\r\n            Label = \"上海\",\r\n            Children = new List<CascaderNode>()\r\n            {\r\n                new CascaderNode { Value = \"31\", Label = \"徐汇区\" },\r\n                new CascaderNode { Value = \"32\", Label = \"黄浦区\" },\r\n                new CascaderNode { Value = \"33\", Label = \"浦东新区\" },\r\n                new CascaderNode { Value = \"34\", Label = \"崇明区\" }\r\n            }\r\n        },\r\n        new CascaderNode()\r\n        {\r\n            Value = \"4\",\r\n            Label = \"北京\",\r\n            Children = new List<CascaderNode>()\r\n            {\r\n                new CascaderNode { Value = \"41\", Label = \"朝阳\" },\r\n                new CascaderNode { Value = \"42\", Label = \"东城\" },\r\n                new CascaderNode { Value = \"43\", Label = \"西城\" }\r\n            }\r\n        },\r\n        new CascaderNode()\r\n        {\r\n            Value = \"5\",\r\n            Label = \"江苏\",\r\n            Children = new List<CascaderNode>()\r\n            {\r\n                new CascaderNode\r\n                {\r\n                    Value = \"51\", Label = \"南京\", Children = new List<CascaderNode>()\r\n                    {\r\n                        new CascaderNode { Value = \"511\", Label = \"鼓楼区\" },\r\n                        new CascaderNode { Value = \"512\", Label = \"玄武区\" }\r\n                    }\r\n                },\r\n                new CascaderNode { Value = \"52\", Label = \"苏州\" },\r\n                new CascaderNode { Value = \"53\", Label = \"无锡\" },\r\n                new CascaderNode { Value = \"54\", Label = \"扬州\" }\r\n            }\r\n        }\r\n    };\r\n\r\n}\r\n",
+        "Code": "<MRow Align=\"AlignTypes.Baseline\">\r\n    <MCol Cols=\"12\" Md=\"6\">\r\n        <MCascader @bind-Value=\"_value\"\r\n                   ChangeOnSelect\r\n                   Items=\"_items\"\r\n                   ItemText=\"u => u.Label\"\r\n                   ItemValue=\"u => u.Value\"\r\n                   ItemChildren=\"u => u.Children\">\r\n        </MCascader>\r\n    </MCol>\r\n    <MCol Cols=\"12\" Md=\"6\">\r\n        Selected value is: @_value\r\n    </MCol>\r\n</MRow>\r\n\r\n@code {\r\n\r\n    public class CascaderNode\r\n    {\r\n        public string Value { get; set; }\r\n        public string Label { get; set; }\r\n        public List<CascaderNode> Children { get; set; }\r\n    }\r\n\r\n    private string _value;\r\n\r\n    private List<CascaderNode> _items = new List<CascaderNode>()\r\n    {\r\n        new CascaderNode()\r\n        {\r\n            Value = \"1\",\r\n            Label = \"湖北\",\r\n            Children = new List<CascaderNode>()\r\n            {\r\n                new CascaderNode\r\n                {\r\n                    Value = \"11\", Label = \"武汉\", Children = new List<CascaderNode>()\r\n                    {\r\n                        new CascaderNode\r\n                        {\r\n                            Value = \"111\", Label = \"武昌区\", Children = new List<CascaderNode>()\r\n                            {\r\n                                new CascaderNode { Value = \"1111\", Label = \"黄鹤楼街道\" },\r\n                                new CascaderNode { Value = \"1112\", Label = \"白沙洲街道\" }\r\n                            }\r\n                        },\r\n                        new CascaderNode { Value = \"112\", Label = \"洪山区\" }\r\n                    }\r\n                },\r\n                new CascaderNode { Value = \"12\", Label = \"黄石\" },\r\n                new CascaderNode { Value = \"13\", Label = \"宜昌\" }\r\n            }\r\n        },\r\n        new CascaderNode()\r\n        {\r\n            Value = \"2\",\r\n            Label = \"浙江\",\r\n            Children = new List<CascaderNode>()\r\n            {\r\n                new CascaderNode { Value = \"21\", Label = \"杭州\" },\r\n                new CascaderNode { Value = \"22\", Label = \"温州\" },\r\n                new CascaderNode { Value = \"23\", Label = \"义乌\" },\r\n                new CascaderNode { Value = \"24\", Label = \"宁波\" }\r\n            }\r\n        },\r\n        new CascaderNode()\r\n        {\r\n            Value = \"3\",\r\n            Label = \"上海\",\r\n            Children = new List<CascaderNode>()\r\n            {\r\n                new CascaderNode { Value = \"31\", Label = \"徐汇区\" },\r\n                new CascaderNode { Value = \"32\", Label = \"黄浦区\" },\r\n                new CascaderNode { Value = \"33\", Label = \"浦东新区\" },\r\n                new CascaderNode { Value = \"34\", Label = \"崇明区\" }\r\n            }\r\n        },\r\n        new CascaderNode()\r\n        {\r\n            Value = \"4\",\r\n            Label = \"北京\",\r\n            Children = new List<CascaderNode>()\r\n            {\r\n                new CascaderNode { Value = \"41\", Label = \"朝阳\" },\r\n                new CascaderNode { Value = \"42\", Label = \"东城\" },\r\n                new CascaderNode { Value = \"43\", Label = \"西城\" }\r\n            }\r\n        },\r\n        new CascaderNode()\r\n        {\r\n            Value = \"5\",\r\n            Label = \"江苏\",\r\n            Children = new List<CascaderNode>()\r\n            {\r\n                new CascaderNode\r\n                {\r\n                    Value = \"51\", Label = \"南京\", Children = new List<CascaderNode>()\r\n                    {\r\n                        new CascaderNode { Value = \"511\", Label = \"鼓楼区\" },\r\n                        new CascaderNode { Value = \"512\", Label = \"玄武区\" }\r\n                    }\r\n                },\r\n                new CascaderNode { Value = \"52\", Label = \"苏州\" },\r\n                new CascaderNode { Value = \"53\", Label = \"无锡\" },\r\n                new CascaderNode { Value = \"54\", Label = \"扬州\" }\r\n            }\r\n        }\r\n    };\r\n\r\n}\r\n",
         "Type": "Demos.Components.FormInputs.children.Cascader.props.ChangeOnSelect",
         "Style": "",
         "Debug": false,

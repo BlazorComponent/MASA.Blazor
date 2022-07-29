@@ -24,8 +24,6 @@ namespace Masa.Blazor
         [Parameter]
         public bool Striped { get; set; }
 
-
-
         [Parameter]
         public bool Bottom { get; set; }
 
@@ -39,9 +37,6 @@ namespace Masa.Blazor
         public bool Active { get; set; } = true;
 
         [Parameter]
-        public string Color { get; set; } = "primary";
-
-        [Parameter]
         public string BackgroundColor { get; set; }
 
         [Parameter]
@@ -49,9 +44,6 @@ namespace Masa.Blazor
 
         [Parameter]
         public bool Stream { get; set; }
-
-        [Parameter]
-        public double Value { get; set; }
 
         [Parameter]
         public double BufferValue { get; set; } = 100;
@@ -93,6 +85,16 @@ namespace Masa.Blazor
 
         protected int NormalizedBuffer => NormalizeValue(BufferValue);
 
+        protected override void OnParametersSet()
+        {
+            base.OnParametersSet();
+
+            if (string.IsNullOrWhiteSpace(Color))
+            {
+                Color = "primary";
+            }
+        }
+
         protected override void SetComponentClass()
         {
             var prefix = "m-progress-linear";
@@ -120,16 +122,16 @@ namespace Masa.Blazor
                         .AddTextColor(Color);
                 })
                 .Apply("stream", cssBuilder =>
-                 {
-                     cssBuilder
-                         .Add($"{prefix}__stream")
-                         .AddTextColor(Color);
-                 }, styleBuilder =>
-                 {
-                     styleBuilder
-                         .AddIf(() => $"width:{100 - NormalizedBuffer}%", () => Stream)
-                         .AddTextColor(Color);
-                 })
+                {
+                    cssBuilder
+                        .Add($"{prefix}__stream")
+                        .AddTextColor(Color);
+                }, styleBuilder =>
+                {
+                    styleBuilder
+                        .AddIf(() => $"width:{100 - NormalizedBuffer}%", () => Stream)
+                        .AddTextColor(Color);
+                })
                 .Apply("background", cssBuilder =>
                 {
                     cssBuilder

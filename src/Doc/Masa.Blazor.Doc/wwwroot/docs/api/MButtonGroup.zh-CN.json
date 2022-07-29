@@ -102,6 +102,11 @@
       "Description": "应用到组件最外层元素的style"
     },
     {
+      "Name": "TargetGroup",
+      "Type": "Nullable<GroupType>",
+      "Description": ""
+    },
+    {
       "Name": "Tile",
       "Type": "Boolean",
       "Default": "false",

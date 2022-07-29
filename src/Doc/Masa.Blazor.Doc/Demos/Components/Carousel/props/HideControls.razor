@@ -1,0 +1,20 @@
+﻿<MCarousel ShowArrows="false" @bind-Value="value">
+    @foreach (var item in items)
+    {
+        <MCarouselItem Src="@item" @key="item">
+        </MCarouselItem>
+    }
+</MCarousel>
+
+@code {
+
+    private string[] items = new[]
+    {
+        "https://cdn.masastack.com/stack/images/website/masa-blazor/carousel/squirrel.jpg",
+        "https://cdn.masastack.com/stack/images/website/masa-blazor/carousel/sky.jpg",
+        "https://cdn.masastack.com/stack/images/website/masa-blazor/carousel/bird.jpg",
+        "https://cdn.masastack.com/stack/images/website/masa-blazor/carousel/planet.jpg",
+    };
+
+    private StringNumber value = 0;
+}

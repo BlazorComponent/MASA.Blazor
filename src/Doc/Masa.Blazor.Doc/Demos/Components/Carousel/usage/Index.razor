@@ -1,0 +1,29 @@
+﻿<MCarousel @bind-Value="value">
+    @for (var i = 0; i < colors.Length; i++)
+    {
+        var index = i;
+
+        <MCarouselItem>
+            <MSheet Color="@colors[index]" Height="@("100%")" Tile>
+                <MRow Class="fill-height" Align="AlignTypes.Center" Justify="JustifyTypes.Center">
+                    <div class="text-h2">Slide @(index + 1)</div>
+                </MRow>
+            </MSheet>
+        </MCarouselItem>
+    }
+</MCarousel>
+
+@code {
+
+    private StringNumber value;
+
+    private string[] colors = new[]
+    {
+        "primary",
+        "secondary",
+        "yellow darken-2",
+        "red",
+        "orange",
+    };
+
+}
